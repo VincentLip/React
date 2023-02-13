@@ -1,7 +1,15 @@
 .magasin {
 
+    
     border: 5px solid black;
     margin: 10px;
     width: 300px;
     text-align: center;
 }
+
+.panier {
+
+    
+    margin-left: 100px;
+}
+

@@ -1,13 +1,16 @@
 export default function Basket(props) {
 
-    const {titre, prix, description} = props.tmpproduit
+    const {titre, prix, description} = props.monbasket
     return (
-        <div className="magasin">
+        <>
+        <div className="panier">
+        <h2>Mon Panier</h2>
         <div>Titre du produit : {titre}</div>
         <div>Prix du produit : {prix}</div>
         <div>Description du produit : {description}</div>
-        <button onClick={this.clickView}>Ajouter au panier</button>
-    </div>
+        <button>Retirer du panier</button>
+        </div>
+        </>
     )
 }
 

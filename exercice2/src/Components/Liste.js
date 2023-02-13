@@ -15,11 +15,12 @@ export class Liste extends Component  {
         }
     }
 
+
     render(){
         
         return (
             <div>
-                {this.state.contact.map((m,i) => (<Contact key={i} contact={m}></Contact>))}    
+                {this.state.contact.map((m,i) => (<Contact key={i} contact={m}></Contact>))}
             </div>
         )
     }

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Magasin } from './Component/Magasin';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 

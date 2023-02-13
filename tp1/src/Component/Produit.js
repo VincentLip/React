@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import Basket from './Basket';
+
 
 export class Produit extends Component {
 
@@ -14,14 +16,17 @@ export class Produit extends Component {
     }
 
     render() {
-        const {titre, prix, description} = this.props.monproduit;
+        const {titre, prix, description,basket} = this.props.monproduit;
             return(
+                <>
                 <div className="magasin">
                     <div>Titre du produit : {titre}</div>
                     <div>Prix du produit : {prix}</div>
                     <div>Description du produit : {description}</div>
                     <button onClick={this.clickView}>Ajouter au panier</button>
                 </div>
+                {this.props.monproduit.basket.map((basket,i) => <Basket key={i} monbasket={basket}></Basket>)}
+                </>
             )
     }
 }
