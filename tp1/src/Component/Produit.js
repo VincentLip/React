@@ -25,7 +25,10 @@ export class Produit extends Component {
                     <div>Description du produit : {description}</div>
                     <button onClick={this.clickView}>Ajouter au panier</button>
                 </div>
+                <div className='panier'>
+
                 {this.props.monproduit.basket.map((basket,i) => <Basket key={i} monbasket={basket}></Basket>)}
+                </div>
                 </>
             )
     }
