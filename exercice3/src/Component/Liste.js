@@ -1,6 +1,7 @@
 import { Component } from "react"
 import Contact from "./Contact";
 import { getInfoContact } from "./Data"
+import { Formulaire } from "./Formulaire";
 
 export class Liste extends Component {
     constructor(props){
@@ -30,7 +31,16 @@ export class Liste extends Component {
             }
         })
         this.setState({ contact : [...tmpContact]})
-}
+    }
+
+    addContact = (c) => {
+
+        
+        console.log(c)
+        this.setState({contact : [...this.state.contact,c]})
+    }
+
+
 
     render(){
         return (
@@ -42,6 +52,7 @@ export class Liste extends Component {
                         {this.state.contact.map((c,i) => (<Contact key={i} contact={c} changeStatutClientByName={this.changeStatutClientByName}></Contact>))}
                     </div>)
                 }
+                <Formulaire addContact={this.addContact}></Formulaire>
             </div>
         )
     }
