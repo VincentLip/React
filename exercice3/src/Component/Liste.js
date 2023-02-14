@@ -19,7 +19,17 @@ export class Liste extends Component {
             console.log(tmpContact)
             this.setState({contact : [...tmpContact]})
         })
+
     }
+    changeStatutClientByName = (lastname) => {
+        
+        const tmpContact = [...this.state.contact]
+        tmpContact.forEach(c => {
+            if(c.lastName == lastname){
+                c.statut = !c.statut
+            }
+        })
+}
 
     render(){
         return (
@@ -28,7 +38,7 @@ export class Liste extends Component {
                     this.state.contact.length == 0 ? <div>En cours de chargement ....</div>
                     :
                     (<div>
-                        {this.state.contact.map((c,i) => (<Contact key={i} contact={c}></Contact>))}
+                        {this.state.contact.map((c,i) => (<Contact key={i} contact={c} changeStatutClientByName={this.changeStatutClientByName}></Contact>))}
                     </div>)
                 }
             </div>
