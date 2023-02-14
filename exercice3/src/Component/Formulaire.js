@@ -42,9 +42,6 @@ export class Formulaire extends Component {
     }
 
     
-
-
-
     render() {
 
         return (
