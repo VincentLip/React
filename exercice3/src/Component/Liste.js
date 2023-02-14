@@ -35,6 +35,7 @@ export class Liste extends Component {
 
     addContact = (c) => {
 
+        c.id = this.state.contact.length
         this.setState({contact : [...this.state.contact,c]})
     }
 
