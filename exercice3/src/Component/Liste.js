@@ -35,8 +35,6 @@ export class Liste extends Component {
 
     addContact = (c) => {
 
-        
-        console.log(c)
         this.setState({contact : [...this.state.contact,c]})
     }
 

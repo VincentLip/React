@@ -5,6 +5,7 @@ export class Formulaire extends Component {
         super(props)
         this.state = {
             contact: {
+                id : "",
                 lastName: "",
                 firstName: "",
                 phone :"",
@@ -37,8 +38,6 @@ export class Formulaire extends Component {
         const tmpAdresse = {...this.state.contact.address}
         tmpContact[e.target.getAttribute("name")] = e.target.value
         tmpAdresse[e.target.getAttribute("name")] = e.target.value
-        console.log(tmpContact)
-        console.log(tmpAdresse)
         this.setState({contact : {...tmpContact, address :{...tmpAdresse}}})
     }
 
@@ -51,33 +50,33 @@ export class Formulaire extends Component {
         return (
             <>
                 <h1>Ajout de Contact</h1>
-                <form onSubmit={this.submitForm}>
+                <form onSubmit={this.submitForm} className="bg-dark p-2 m-2 rounded text-light">
                     <div>
-                        <label>Votre nom</label>
+                        <label className="m-2">Votre nom :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="lastName"></input>
                     </div>
                     <div>
-                        <label>Votre prénom</label>
+                        <label className="m-2">Votre prénom :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="firstName"></input>
                     </div>
                     <div>
-                        <label>Votre n° telephone</label>
+                        <label className="m-2">Votre n° telephone :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="phone"></input>
                     </div>
                     <h4>Adresse</h4>
                     <div>
-                        <label>Votre rue</label>
+                        <label className="m-2">Votre rue :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="street"></input>
                     </div>
                     <div>
-                        <label>Votre code postal</label>
+                        <label className="m-2">Votre code postal :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="postCode"></input>
                     </div>
                     <div>
-                        <label>Votre ville</label>
+                        <label className="m-2">Votre ville :</label>
                         <input type="text" onChange={this.fieldsOnChangeContact} name="city"></input>
                     </div>
-                    <button>Envoyer</button>
+                    <button className="btn btn-outline-success">Envoyer</button>
                 </form>
             </>
         )
