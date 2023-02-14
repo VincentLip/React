@@ -5,7 +5,8 @@ export default function Contact(props) {
 
     const clickStatut = (e) => {
         e.preventDefault()
-        props.changeStatutClientByName(e.target.dataset.lastName)
+        props.changeStatutClientByName(props.contact.id)
+        console.log(props.contact.id)
     }
 
 

@@ -21,14 +21,15 @@ export class Liste extends Component {
         })
 
     }
-    changeStatutClientByName = (lastname) => {
+    changeStatutClientByName = (id) => {
         
         const tmpContact = [...this.state.contact]
         tmpContact.forEach(c => {
-            if(c.lastName == lastname){
-                c.statut = !c.statut
+            if(c.id == id){
+                c.status = !c.status
             }
         })
+        this.setState({ contact : [...tmpContact]})
 }
 
     render(){
