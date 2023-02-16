@@ -7,11 +7,12 @@ import TodoList from './Component/TodoList';
 
 function App() {
 
-  const [todoitems, setCustomers] = useState<TodoItem[]>([])
+  const [todoitems, setTodoItems] = useState<TodoItem[]>([])
 
   const addTodoItem = (todoitem: TodoItem) => {
-    setCustomers([...todoitems, todoitem])
+    setTodoItems([...todoitems, todoitem])
   }
+  
 console.log(todoitems)
   return (
     <div className="App">

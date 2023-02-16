@@ -10,7 +10,10 @@ const TodoList = (props: Props) => {
 
     return (
         <>
-            {props.test}
+            {props.test.description}
+            {props.test.title}
+            {props.test.dueDate}
+            {props.test.isDone}
         </>
     )
 }
