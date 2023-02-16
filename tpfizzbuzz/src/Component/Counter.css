@@ -1,7 +1,6 @@
 .counter{
-    
-        display: grid;
 
+    display:  grid;
 }
 
 .count {
@@ -16,9 +15,16 @@
     
 }
 
+.divbouton{
+
+    display: grid;
+    grid-template: 1fr 80px / 80px 1fr 80px;
+}
+
 .bouton {
-    
-    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%; 
 }
 
 

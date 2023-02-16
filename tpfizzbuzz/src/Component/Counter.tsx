@@ -21,7 +21,7 @@ const Counter = (props: Props) => {
 
     return(
         <>
-        <div className="container">
+        <div className="container m-3">
             <div className="row">
                 <div className="col-md-6 offset-md-3 bg-dark text-white rounded p-3">
                     <h2>Exo Compteur</h2>
@@ -33,8 +33,8 @@ const Counter = (props: Props) => {
                             :(myCount % 5 === 0  && myCount != 0) ? <span className="text-success">Buzz</span>  
                             :myCount)}</span>
                         </div>
-                        <div className="">
-                            <button className="btn btn-primary bouton " disabled={myCount==0} onClick={subCount}>-</button>
+                        <div className="divbouton">
+                            <button className="btn btn-primary bouton" disabled={myCount==0} onClick={subCount}>-</button>
                             <button className="btn btn-primary bouton" onClick={addCount}>+</button>
                         </div>
                     </div>
@@ -42,13 +42,6 @@ const Counter = (props: Props) => {
             </div>
         </div>
         </>
-    
-    
     )
-
 }
-    
-    
-
-
 export default Counter
