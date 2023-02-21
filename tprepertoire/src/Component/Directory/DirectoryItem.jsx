@@ -77,7 +77,7 @@ const DirectoryItem = (props) => {
             </div>
             <div className="mb-3">
                 <label htmlFor="avatar" className="form-label">Photo: </label>
-                <input type="file" required id="avatar" ref={avatarRef} className="form-control" />
+                <input type="text" required id="avatar" ref={avatarRef} className="form-control" />
             </div>
             <div className="text-end">
                 <button className="btn btn-outline-light"><i className="bi bi-send"></i> Valider</button>
