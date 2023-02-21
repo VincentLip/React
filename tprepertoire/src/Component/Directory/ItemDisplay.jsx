@@ -12,7 +12,7 @@ const ItemDisplay = (props) => {
                     <div className="col-8 ">
                         <div className="d-flex justify-content-between">
                             <h5>{item.lastname} {item.firstname}</h5>
-                            <button className="btn btn-outline-warning "><i className="bi bi-pencil-square"></i></button>
+                            <button className="btn btn-outline-warning " onClick={() => props.editItem(item.id)}><i className="bi bi-pencil-square"></i></button>
                             <button className="btn btn-outline-danger" onClick={() => props.deleteItem(item.id)}><i className="bi bi-trash"></i></button>
                         </div>
                         <hr />

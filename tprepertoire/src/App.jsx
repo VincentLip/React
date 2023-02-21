@@ -144,8 +144,49 @@ const deleteItemHandler = async (itemId) => {
   }
 }
 
+  const editItemHandler= async (itemId) => {
+
+    const itemFound = items.find(item => item.id === itemId)
+    if (itemFound) {
+      const token = localStorage.getItem('token')
+      if (token) {
+        try {
+          const newItemValues = {
+            ...itemFound,
+            lastname: "michel"
+          
+          }
+          console.log(newItemValues)
+          const response = await fetch(`${BASE_DB_URL}items/${itemId}.json?auth=${token}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newItemValues)
+          })
+
+          if (!response.ok) {
+            throw new Error("Erreur durant la requête PATCH !")
+          }
+
+          const data = await response.json()
+
+          console.log(data);
+
+          setItems([...items.filter(item => item !== itemFound), newItemValues])
+
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+    }
+
+
+  }
+
 const visible = (event) => {
 
+  event.preventDefault();
   setModalVisible(true)
 }
 
@@ -189,7 +230,7 @@ const addContact = (event) => {
                   </ModalComponent1>, document.getElementById("modal-root"))}
                   {items.length === 0 ? 
                   <p>Il n'y a pas de tâches dans la base de données !</p> : 
-                  items.map(item => <ItemDisplay key={item.id} item={item} deleteItem={deleteItemHandler}/>)}
+                  items.map(item => <ItemDisplay key={item.id} item={item} deleteItem={deleteItemHandler} editItem={editItemHandler}/>)}
           
             </div>
           </div>
