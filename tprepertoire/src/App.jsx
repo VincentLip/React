@@ -3,17 +3,20 @@ import { useRef, useState } from 'react';
 import { createPortal } from "react-dom";
 import { API_KEY } from './apiKey';
 import './App.css';
-import NavbarComponent from './Component/NavbarComponent';
-import ModalComponent from './shared/ModalComponent';
+import DirectoryItem from './Component/Directory/DirectoryItem';
+import NavbarComponent from './Component/NavBar/NavbarComponent';
+import ModalComponent from './Component/shared/ModalComponent';
 
 function App() {
 
+  const BASE_DB_URL = "https://m2i-demo-auth-trece-default-rtdb.europe-west1.firebasedatabase.app/"
   const [modalVisible, setModalVisible] = useState(false)
   const [isLogging, setIsLogging] = useState(false)
   const [isLogged, setIsLogged] = useState(false)
 
   const emailRef = useRef()
   const passwordRef = useRef()
+  const [items, setItems] = useState([])
 
   const submitFormHandler = async (event) => {
 
@@ -31,18 +34,6 @@ function App() {
 
     try {
 
-      /* 
-        La requête est cependant la même, que l'on cible l'endpoint de connexion ou d'enregistrement
-        Via l'utilisation de fetch, on peut envoyer une requête API.
-
-        Pour utiliser fetch(), il faut passer deux paramètres : 
-          - L'endpoint à requêter (une addresse URL idéalement en HTTPS)
-          - La configuration de la requête qui se présente sous la forme d'un objet en plusieurs parties :
-            - La méthode (par défaut GET)
-            - Les headers (pour par exemple ajouter le type de document que l'on envoie)
-            - Le corps (les données à envoyer à l'API pour qu'elle puisse les traiter et offrir une réponse appropriée)
-
-      */
       const response = await fetch(BASE_URL, {
         method: "POST",
         headers: {
@@ -73,18 +64,54 @@ function App() {
     }
 }
 
+const addItem = async (Item) => {
+  console.log(Item)
+  try {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const response = await fetch(`${BASE_DB_URL}items.json?auth=${token}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body : JSON.stringify(Item)
+      })
+
+      if (!response.ok) {
+        throw new Error("Il y a eu un problème !")
+      }
+
+      const data = await response.json()
+      setItems([...items, {id: data.name, ...Item}])
+      // refreshTodos()
+
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+
+
 const visible = (event) => {
 
+  
   setModalVisible(true)
 }
 
+const addContact = (event) => {
+
+  event.preventDefault();
+  
+  
+}
 
   return (
     <>
     <NavbarComponent visible={visible}></NavbarComponent>
     {modalVisible && createPortal(<ModalComponent closeModal={() => setModalVisible(false)}>
         <div className="d-flex justify-content-between align-items center">
-        <h3>Register</h3>
+        <h3>Register /Log-in</h3>
         <button onClick={() =>setModalVisible(false)} className="btn btn-outline-dark rounded-circle"><i className="bi bi-x"></i></button>
         </div>
         <hr />
@@ -106,7 +133,8 @@ const visible = (event) => {
         <div className="row g-2 py-3">
           <div className="col-8">
             <div className="bg-dark text-light rounded p-3">
-
+                <button className="btn btn-outline-success" onClick={addContact}>Ajouter</button>
+                  <DirectoryItem addItem={addItem}></DirectoryItem>
             </div>
           </div>
         </div>
