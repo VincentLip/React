@@ -4,7 +4,7 @@ const ErrorPage = () => {
   const error = useRouteError() 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center" style={{height: "100vh", width:"100vw"}}>
-      <h1>Error {error.status}!</h1>
+      <img src="https://thumbs.dreamstime.com/b/erreur-morte-d-emoji-100387206.jpg" alt="" />
       <p>{error.data}</p>
     </div>
   )
