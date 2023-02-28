@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Navigate, useParams, useSearchParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { addContactAction, deleteRecipeAction, editContactAction } from "./ContactSlice"
 
 const ContactForm = (props) => {
@@ -8,6 +8,7 @@ const ContactForm = (props) => {
     const [searchParams] = useSearchParams()
     const mode = searchParams.get('mode')
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const contact = useSelector(state => state.contacts.contacts).find(r => r.id === props.contactId)
 
@@ -46,6 +47,7 @@ const ContactForm = (props) => {
                 dispatch(editContactAction({...contactValues, id: contact.id}))
             }
         }
+        navigate("/contacts")
     }
 
     return (
